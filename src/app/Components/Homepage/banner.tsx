@@ -1,7 +1,7 @@
 import BannerImage from '@/assets/banner.png'
 import Image from 'next/image';
 
-const banner = () => {
+const Banner = () => {
     return (
         <div className='flex justify-between mt-10 bg-[#15171d] pt-16 pb-20 rounded-2xl'>
             <div className=' pt-8 pl-16'>
@@ -17,4 +17,4 @@ const banner = () => {
     );
 };
 
-export default banner;
+export default Banner;
