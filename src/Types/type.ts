@@ -3,7 +3,7 @@ export interface IFitLog {
   name: string;
   image: string;
   muscleGroups: string[];
-  equipment: string;
+  equipment: string[];
   difficulty: string;
   duration: number;
   caloriesBurned: number;
