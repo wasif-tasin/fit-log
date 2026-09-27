@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '../../assets/logo.png'
+import Logo from '@/assets/logo.png'
 import ActiveLinks from './activelinks';
 
 const navbar = () => {
@@ -12,7 +12,7 @@ const navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-black shadow-sm p-0">
+        <div className="navbar bg-black shadow-sm p-0 border-b border-[#212224]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,7 +25,7 @@ const navbar = () => {
                     </ul>
                 </div>
                 <Link href='/'>
-                <div className='flex gap-2 font-bold'>
+                <div className='flex gap-2 font-bold font-(family-name:--font-oswald)'>
                     <Image src={Logo} alt='Logo'></Image>
                     FITLOG
                 </div>
