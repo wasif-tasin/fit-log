@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import type { IFitLog } from "@/Types/type";
 
 interface IPageProps {
