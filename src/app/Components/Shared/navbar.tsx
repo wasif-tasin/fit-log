@@ -8,11 +8,11 @@ const navbar = () => {
     const links = <>
         <li><ActiveLinks href='/Workouts'>Workouts</ActiveLinks></li>
         <li><ActiveLinks href='/MyPlans'>My Plans</ActiveLinks></li>
-       
+
     </>
 
     return (
-        <div className="navbar bg-black shadow-sm p-0 border-b border-[#212224]">
+        <div className="navbar bg-black shadow-sm p-0 border-b border-[#212224] sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,10 +25,10 @@ const navbar = () => {
                     </ul>
                 </div>
                 <Link href='/'>
-                <div className='flex gap-2 font-bold font-(family-name:--font-oswald)'>
-                    <Image src={Logo} alt='Logo'></Image>
-                    FITLOG
-                </div>
+                    <div className='flex gap-2 font-bold font-(family-name:--font-oswald)'>
+                        <Image src={Logo} alt='Logo'></Image>
+                        FITLOG
+                    </div>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
