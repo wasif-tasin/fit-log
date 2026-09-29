@@ -9,7 +9,7 @@ interface IFitLogDataProps {
 
 const FitLogsCard = ({ fitlog }: IFitLogDataProps) => {
     return (
-        <Link href={`/Fit-Logs/${fitlog.id}`}>
+        <Link href={`/fit-logs/${fitlog.id}`}>
             <div className="card w-full shadow:sm overflow-hidden min-w-0 shadow-sm  bg-[#15171d]">
                 <figure className='w-full'>
 
@@ -32,7 +32,7 @@ const FitLogsCard = ({ fitlog }: IFitLogDataProps) => {
                                     {muscle}
                                 </span>
                             ))
-                        };
+                        }
                     </div>
 
                     <span className='font-(family-name:--font-oswald) text-2xl md:text-3xl font-bold'>

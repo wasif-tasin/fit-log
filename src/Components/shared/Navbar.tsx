@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '@/assets/logo.png'
-import ActiveLinks from './activelinks';
+import ActiveLinks from '@/Components/shared/ActiveLinks';
 
 const navbar = () => {
 
     const links = <>
-        <li><ActiveLinks href='/Workouts'>Workouts</ActiveLinks></li>
-        <li><ActiveLinks href='/MyPlans'>My Plans</ActiveLinks></li>
+        <li><ActiveLinks href='/'>Workouts</ActiveLinks></li>
+        <li><ActiveLinks href='/my-plans'>My Plans</ActiveLinks></li>
 
     </>
 
@@ -20,26 +20,26 @@ const navbar = () => {
                     </div>
                     <ul
                         tabIndex={-1}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 shadow">
                         {links}
                     </ul>
                 </div>
                 <Link href='/'>
                     <div className='flex gap-2 font-bold font-(family-name:--font-oswald)'>
-                        <Image src={Logo} alt='Logo'></Image>
+                        <Image src={Logo} alt='Logo' className=' hidden md:flex'></Image>
                         FITLOG
                     </div>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end flex gap-4">
-                <Link href={"/MyPlans"}>Plans</Link>
+            <div className="navbar-end flex gap-4 pr-5 lg:pr-0">
+                <Link href={"/my-plans"}>Plans</Link>
                 <span>0</span>
-                <Link href={"/MyPlans"}>Saved</Link>
+                <Link href={"/my-plans"}>Saved</Link>
                 <span>0</span>
             </div>
         </div>

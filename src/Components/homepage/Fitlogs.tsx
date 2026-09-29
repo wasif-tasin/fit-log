@@ -1,11 +1,10 @@
-import React from 'react';
-import FitLogsCard from '../Shared/fitlogscard';
+import FitLogsCard from '@/Components/shared/FitLogsCard';
 import type { IFitLog } from '@/Types/type';
 
 
 const getFitLogs = async () => {
     try {
-        const response = await fetch('https://api.abcz.workers.dev/api/fitlog');
+        const response = await fetch('https://api.abcz.workers.dev/api/fitlog',);
         const data = await response.json();
         return data;
     }
@@ -17,7 +16,6 @@ const getFitLogs = async () => {
 
 const FitLogs = async () => {
     const FitLogsData = await getFitLogs();
-    console.log(FitLogsData);
     return (
         <section className="w-full min-w-0 px-0 py-17.5">
             <div className="grid w-full min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">

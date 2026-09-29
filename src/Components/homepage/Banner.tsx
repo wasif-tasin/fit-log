@@ -16,7 +16,7 @@ const Banner = () => {
                     EVERY SET.
                 </p>
                 <p
-                    className='pb-8 text-[#9ca3afFF] pt-6'>
+                    className='pb-8 text-[#9ca3af] pt-6'>
                     FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br />
                     into today&apos;s plan, and watch the week&apos;s work add up.
                 </p>

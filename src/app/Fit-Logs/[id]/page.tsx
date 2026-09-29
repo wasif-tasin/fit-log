@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { IFitLog } from "@/Types/type";
+import TodayPlanButton from "@/Components/fit-logs-details/TodayPlanButton";
+import SaveForLaterButton from "@/Components/fit-logs-details/SaveForLaterButton";
 
 interface IPageProps {
     params: Promise<{
@@ -25,8 +27,8 @@ const FitLogDetails = async ({ params }: IPageProps) => {
     const fitlog = fitlogdata.find((fitlog: IFitLog) => fitlog.id === Number(id),) as IFitLog;
 
     return (
-        <main className="w-full px-4 py-10 md:px-8 lg:px-12">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
+        <main className="w-full px-4 py-10 md:px-10 lg:px-10">
+            <div className="mx-auto grid max-w-370 grid-cols-1 gap-8 lg:grid-cols-2">
 
                 <div className="w-full">
                     <div className="overflow-hidden rounded-2xl">
@@ -35,7 +37,7 @@ const FitLogDetails = async ({ params }: IPageProps) => {
                             alt={fitlog.name}
                             width={900}
                             height={900}
-                            className="h-auto w-full object-cover"
+                            className="object-cover"
                         />
                     </div>
                 </div>
@@ -132,13 +134,10 @@ const FitLogDetails = async ({ params }: IPageProps) => {
                         </div>
                     </div>
                     <div className="mt-8 flex flex-wrap gap-3">
-                        <button className="rounded-lg bg-[#c3f801] px-5 py-3 text-sm font-bold text-black">
-                            Add to today&apos;s plan
-                        </button>
-
-                        <button className="rounded-lg border border-[#343943] px-5 py-3 text-sm font-medium">
-                            Save for later
-                        </button>
+                        
+                        <TodayPlanButton fitlog={fitlog}></TodayPlanButton>
+                        <SaveForLaterButton fitlog={fitlog}></SaveForLaterButton>
+                        
                     </div>
 
                 </div>

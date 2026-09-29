@@ -7,3 +7,15 @@ body {
   color: #ffffff;
   min-height: 100%;
 }
+
+html {
+  scrollbar-gutter: stable;
+}
+
+.button-shrink {
+  transition: all 0.3s ease-in-out;
+}
+
+.button-shrink:hover {
+  transform: scale(0.9);
+}
