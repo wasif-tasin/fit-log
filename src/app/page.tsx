@@ -1,6 +1,5 @@
-import React from 'react';
-import BannerImage from '@/Components/homepage/Banner'
-import FitLogs from '@/Components/homepage/Fitlogs';
+import BannerImage from "@/Components/homepage/Banner";
+import FitLogs from "@/Components/homepage/Fitlogs";
 
 const page = () => {
   return (

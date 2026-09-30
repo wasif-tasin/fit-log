@@ -13,9 +13,15 @@ html {
 }
 
 .button-shrink {
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
-.button-shrink:hover {
+@media (hover: hover) {
+  .button-shrink:hover {
+    transform: scale(0.9);
+  }
+}
+
+.button-shrink:active {
   transform: scale(0.9);
 }
