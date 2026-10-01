@@ -1,7 +1,7 @@
 "use client";
 
 import { FitLogsContext } from "@/context/FitLogsContext";
-import type { IFitLog } from "@/Types/type";
+import type { IFitLog } from "@/types/type";
 import React, { useContext } from "react";
 import { toast } from "sonner";
 

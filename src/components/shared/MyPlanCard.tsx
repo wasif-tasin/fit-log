@@ -1,5 +1,5 @@
 import { FitLogsContext } from "@/context/FitLogsContext";
-import type { IFitLog } from "@/Types/type";
+import type { IFitLog } from "@/types/type";
 import { Clock, Flame, Star, Trash, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

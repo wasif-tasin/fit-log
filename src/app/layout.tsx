@@ -4,7 +4,7 @@ import "./globals.css";
 import FitLogsProvider from "@/context/FitLogsContext";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "sonner";
-import Navbar from "../components/shared/Navbar";
+import Navbar from "@/components/shared/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

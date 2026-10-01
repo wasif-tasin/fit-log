@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { IFitLog } from "@/Types/type";
+import type { IFitLog } from "@/types/type";
 import TodayPlanButton from "@/components/fit-logs-details/TodayPlanButton";
 import SaveForLaterButton from "@/components/fit-logs-details/SaveForLaterButton";
 import { notFound } from "next/navigation";

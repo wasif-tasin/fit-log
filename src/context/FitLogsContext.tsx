@@ -1,5 +1,5 @@
 "use client";
-import type { IFitLog } from "@/Types/type";
+import type { IFitLog } from "@/types/type";
 import {
     createContext,
     useState,

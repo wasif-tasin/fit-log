@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NotFoundAnimation from "../components/shared/NotFoundAnimation";
+import NotFoundAnimation from "@/components/shared/NotFoundAnimation";
 
 const NotFound = () => {
   return (

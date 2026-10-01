@@ -1,7 +1,7 @@
 "use client";
 import MyPlanCard from "@/components/shared/MyPlanCard";
 import { FitLogsContext } from "@/context/FitLogsContext";
-import type { IFitLog } from "@/Types/type";
+import type { IFitLog } from "@/types/type";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 
