@@ -214,7 +214,7 @@ Possible future improvements include:
 
 ## Author
 
-**Nishat Mahzaben**
+**Wasif Tasin**
 
 ---
 
