@@ -1,7 +1,8 @@
 import Image from "next/image";
 import type { IFitLog } from "@/Types/type";
-import TodayPlanButton from "@/Components/fit-logs-details/TodayPlanButton";
-import SaveForLaterButton from "@/Components/fit-logs-details/SaveForLaterButton";
+import TodayPlanButton from "@/components/fit-logs-details/TodayPlanButton";
+import SaveForLaterButton from "@/components/fit-logs-details/SaveForLaterButton";
+import { notFound } from "next/navigation";
 
 interface IPageProps {
   params: Promise<{
@@ -26,6 +27,10 @@ const FitLogDetails = async ({ params }: IPageProps) => {
   const fitlog = fitlogdata.find(
     (fitlog: IFitLog) => fitlog.id === Number(id),
   ) as IFitLog;
+
+  if (!fitlog) {
+    notFound();
+  }
 
   return (
     <main className="w-full px-0 py-10 md:px-10 lg:px-10">

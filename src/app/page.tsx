@@ -1,5 +1,5 @@
-import BannerImage from "@/Components/homepage/Banner";
-import FitLogs from "@/Components/homepage/Fitlogs";
+import BannerImage from "@/components/homepage/Banner";
+import FitLogs from "@/components/homepage/Fitlogs";
 
 const page = () => {
   return (

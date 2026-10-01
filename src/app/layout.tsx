@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/shared/Navbar";
 import FitLogsProvider from "@/context/FitLogsContext";
-import Footer from "@/Components/shared/Footer";
+import Footer from "@/components/shared/Footer";
 import { Toaster } from "sonner";
+import Navbar from "@/components/shared/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,10 +38,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="dark"
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className=" container mx-auto px-2">
+      <body className=" min-h-screen flex flex-col container mx-auto px-2">
         <FitLogsProvider>
           <Navbar></Navbar>
-          <main>{children}</main>
+
+          <main className="flex-1">{children}</main>
+
+          <Footer></Footer>
+
           <Toaster
             position="top-right"
             toastOptions={{
@@ -56,7 +60,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               },
             }}
           />
-          <Footer></Footer>
         </FitLogsProvider>
       </body>
     </html>

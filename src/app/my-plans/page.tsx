@@ -1,8 +1,10 @@
 "use client";
-import MyPlanCard from "@/Components/shared/MyPlanCard";
+import MyPlanCard from "@/components/shared/MyPlanCard";
 import { FitLogsContext } from "@/context/FitLogsContext";
+import type { IFitLog } from "@/Types/type";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
+
 
 const MyPlanPage = () => {
   const context = useContext(FitLogsContext);
@@ -13,15 +15,35 @@ const MyPlanPage = () => {
 
   const { todayPlan, saveForLater } = context;
 
+  const [sortBy, setSortBy] = useState<"Duration" | "Calories" | "Rating">(
+    "Duration",
+  );
+
+  const sortFitLog = (fitlog: IFitLog[]) => {
+    const sortedFitLog = [...fitlog];
+
+    if (sortBy === "Duration") {
+      sortedFitLog.sort((a, b) => a.duration - b.duration);
+    } else if (sortBy === "Calories") {
+      sortedFitLog.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    } else if (sortBy === "Rating") {
+      sortedFitLog.sort((a, b) => b.rating - a.rating);
+    }
+    return sortedFitLog;
+  };
+
+  const sortedTodayPlan = sortFitLog(todayPlan);
+  const sortedSaveForLater = sortFitLog(saveForLater);
+
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
   const currentPlanTab = activeTab === "today" ? todayPlan : saveForLater;
   console.log(
-  currentPlanTab.map((fitlog) => ({
-    name: fitlog.name,
-    calories: fitlog.caloriesBurned,
-  })),
-);
+    currentPlanTab.map((fitlog) => ({
+      name: fitlog.name,
+      calories: fitlog.caloriesBurned,
+    })),
+  );
 
   const exercises = currentPlanTab.length;
 
@@ -70,28 +92,45 @@ const MyPlanPage = () => {
       </div>
       <div className="mt-6 w-full">
         {/* Tabs */}
-        <div className="flex w-fit rounded-xl bg-[#15171d] py-2 px-2">
-          <button
-            type="button"
-            onClick={() => setActiveTab("today")}
-            className={`rounded-xl px-5 py-2 text-sm ${activeTab === "today"
-              ? "bg-[#242832] font-bold text-white"
-              : "text-[#9ca3af]"
-              }`}
-          >
-            Today&apos;s Plan
-          </button>
+        <div className="flex justify-between">
+          <div className="flex w-fit rounded-xl bg-[#15171d] py-2 px-2">
+            <button
+              type="button"
+              onClick={() => setActiveTab("today")}
+              className={`rounded-xl px-5 py-2 text-sm ${activeTab === "today"
+                ? "bg-[#242832] font-bold text-white"
+                : "text-[#9ca3af]"
+                }`}
+            >
+              Today&apos;s Plan
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab("saved")}
-            className={`rounded-xl px-5 py-2 text-sm ${activeTab === "saved"
-              ? "bg-[#242832] font-bold text-white"
-              : "text-[#9ca3af]"
-              }`}
-          >
-            Saved
-          </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("saved")}
+              className={`rounded-xl px-5 py-2 text-sm ${activeTab === "saved"
+                ? "bg-[#242832] font-bold text-white"
+                : "text-[#9ca3af]"
+                }`}
+            >
+              Saved
+            </button>
+          </div>
+          <div className="relative w-fit rounded-2xl">
+            <select
+              defaultValue="Duration"
+              className=" cursor-pointer  w-30 rounded-xl border border-[#0c0d0f] bg-[#15171d] px-5 py-5 pr-11 text-sm text-white outline-none transition hover:border-[#4a4f5a] focus:border-[#c3f801] focus:font-bold select"
+              onChange={(e) =>
+                setSortBy(
+                  e.target.value as "Duration" | "Calories" | "Rating",
+                )
+              }
+            >
+              <option value="Duration">Duration</option>
+              <option value="Calories">Calories</option>
+              <option value="Rating">Rating</option>
+            </select>
+          </div>
         </div>
 
         {/* Content */}
@@ -99,7 +138,7 @@ const MyPlanPage = () => {
           {activeTab === "today" ? (
             todayPlan.length > 0 ? (
               <div className="space-y-4">
-                {todayPlan.map((fitlog) => (
+                {sortedTodayPlan.map((fitlog) => (
                   <MyPlanCard key={fitlog.id} fitlog={fitlog} type="today" />
                 ))}
               </div>
@@ -122,7 +161,7 @@ const MyPlanPage = () => {
             )
           ) : saveForLater.length > 0 ? (
             <div className="space-y-4">
-              {saveForLater.map((fitlog) => (
+              {sortedSaveForLater.map((fitlog) => (
                 <MyPlanCard key={fitlog.id} fitlog={fitlog} type="saved" />
               ))}
             </div>

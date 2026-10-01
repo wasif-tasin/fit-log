@@ -20,7 +20,7 @@ const Banner = () => {
         </button>
       </div>
       <Image
-        className="order-first mr-0 md:mr-10 lg:mr-10 xl:mr-20"
+        className="order-first mr-0 md:mr-10 lg:mr-10 xl:mr-20 "
         width={360}
         height={334}
         src={BannerImage}

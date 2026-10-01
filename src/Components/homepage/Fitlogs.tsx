@@ -1,4 +1,4 @@
-import FitLogsCard from "@/Components/shared/FitLogsCard";
+import FitLogsCard from "@/components/shared/FitLogsCard";
 import type { IFitLog } from "@/Types/type";
 
 const getFitLogs = async () => {

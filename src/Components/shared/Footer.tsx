@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="flex flex-col md:flex-row md:justify-between items-center  md:p-0 md:py-4 border-t border-[#212224] mt-3">
+        <footer className="flex flex-col md:flex-row md:justify-between items-center  md:p-0 py-2 md:py-3 border-t border-[#212224] mt-3">
             <div>
                 <h2 className="font-bold font-(family-name:--font-oswald)">FITLOG</h2>
             </div>
