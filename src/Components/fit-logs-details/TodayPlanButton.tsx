@@ -3,6 +3,7 @@
 import { FitLogsContext } from "@/context/FitLogsContext";
 import type { IFitLog } from "@/Types/type";
 import React, { useContext } from "react";
+import { toast } from "sonner";
 
 const TodayPlanButton = ({ fitlog }: { fitlog: IFitLog }) => {
   const context = useContext(FitLogsContext);
@@ -17,9 +18,9 @@ const TodayPlanButton = ({ fitlog }: { fitlog: IFitLog }) => {
     const exists = todayPlan.some((item) => item.id === fitlog.id);
     if (!exists) {
       setTodayPlan([...todayPlan, fitlog]);
-      alert("Item Added to Today's Plan");
+      toast.success("Exercise added to today's plan");
     } else {
-      alert("Item is already in Today's Plan");
+      toast.error("Exercise is already in today's plan");
     }
   };
 

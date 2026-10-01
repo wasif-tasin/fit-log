@@ -3,6 +3,7 @@
 import { FitLogsContext } from "@/context/FitLogsContext";
 import type { IFitLog } from "@/Types/type";
 import React, { useContext } from "react";
+import { toast } from "sonner";
 
 const SaveForLaterButton = ({ fitlog }: { fitlog: IFitLog }) => {
   const context = useContext(FitLogsContext);
@@ -14,7 +15,13 @@ const SaveForLaterButton = ({ fitlog }: { fitlog: IFitLog }) => {
   const { saveForLater, setSaveForLater } = context;
 
   const handleSavedForLater = () => {
-    setSaveForLater([...saveForLater, fitlog]);
+    const exists = saveForLater.some((item) => item.id === fitlog.id);
+    if (!exists) {
+      setSaveForLater([...saveForLater, fitlog]);
+      toast.success("Exercise saved for later");
+    } else {
+      toast.error("Exercise is already saved");
+    }
   };
 
   return (

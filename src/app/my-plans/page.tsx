@@ -1,5 +1,4 @@
 "use client";
-import FitLogsCard from "@/Components/shared/FitLogsCard";
 import MyPlanCard from "@/Components/shared/MyPlanCard";
 import { FitLogsContext } from "@/context/FitLogsContext";
 import Link from "next/link";
@@ -13,16 +12,28 @@ const MyPlanPage = () => {
   }
 
   const { todayPlan, saveForLater } = context;
-  const exercises = todayPlan.length;
-  const minutes = todayPlan.reduce(
+
+  const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
+
+  const currentPlanTab = activeTab === "today" ? todayPlan : saveForLater;
+  console.log(
+  currentPlanTab.map((fitlog) => ({
+    name: fitlog.name,
+    calories: fitlog.caloriesBurned,
+  })),
+);
+
+  const exercises = currentPlanTab.length;
+
+  const minutes = currentPlanTab.reduce(
     (totalMinutes, fitlog) => totalMinutes + fitlog.duration,
     0,
   );
-  const calories = todayPlan.reduce(
+
+  const calories = currentPlanTab.reduce(
     (totalCalories, fitlog) => totalCalories + fitlog.caloriesBurned,
     0,
   );
-  const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
   return (
     <div>
@@ -64,8 +75,8 @@ const MyPlanPage = () => {
             type="button"
             onClick={() => setActiveTab("today")}
             className={`rounded-xl px-5 py-2 text-sm ${activeTab === "today"
-                ? "bg-[#242832] font-bold text-white"
-                : "text-[#9ca3af]"
+              ? "bg-[#242832] font-bold text-white"
+              : "text-[#9ca3af]"
               }`}
           >
             Today&apos;s Plan
@@ -75,8 +86,8 @@ const MyPlanPage = () => {
             type="button"
             onClick={() => setActiveTab("saved")}
             className={`rounded-xl px-5 py-2 text-sm ${activeTab === "saved"
-                ? "bg-[#242832] font-bold text-white"
-                : "text-[#9ca3af]"
+              ? "bg-[#242832] font-bold text-white"
+              : "text-[#9ca3af]"
               }`}
           >
             Saved
@@ -89,7 +100,7 @@ const MyPlanPage = () => {
             todayPlan.length > 0 ? (
               <div className="space-y-4">
                 {todayPlan.map((fitlog) => (
-                  <MyPlanCard key={fitlog.id} fitlog={fitlog} />
+                  <MyPlanCard key={fitlog.id} fitlog={fitlog} type="today" />
                 ))}
               </div>
             ) : (
@@ -112,7 +123,7 @@ const MyPlanPage = () => {
           ) : saveForLater.length > 0 ? (
             <div className="space-y-4">
               {saveForLater.map((fitlog) => (
-                <MyPlanCard key={fitlog.id} fitlog={fitlog} />
+                <MyPlanCard key={fitlog.id} fitlog={fitlog} type="saved" />
               ))}
             </div>
           ) : (

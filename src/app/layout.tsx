@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/Components/shared/Navbar";
 import FitLogsProvider from "@/context/FitLogsContext";
 import Footer from "@/Components/shared/Footer";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <FitLogsProvider>
           <Navbar></Navbar>
           <main>{children}</main>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              style: {
+                background: "#15171d",
+                color: "white",
+                border: "1px solid #343943",
+              },
+              classNames: {
+                success: "[&_[data-icon]]:text-green-500",
+                error: "[&_[data-icon]]:text-red-500",
+              },
+            }}
+          />
           <Footer></Footer>
         </FitLogsProvider>
       </body>
